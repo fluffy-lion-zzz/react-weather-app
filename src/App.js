@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react'
+import { collect } from './utilities/collect'
 require('dotenv').config()
 
 function App() {
@@ -8,20 +9,12 @@ function App() {
 
   
   const handleFetch = async () => {
-    const key = process.env.REACT_APP_API_KEY
     try {
-      const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=london&appid=${key}`)
-      
-      if(res.status !== 200){
-        throw new Error("oops")
-      }
-      const data = await res.json()
-      setData(data)
-      console.log(data)
-    } catch(error){
-      setError({ error: true, message: error.message})
+      let newData = await collect()
+      setData(newData)
+    } catch(e) {
+      console.log(e)
     }
-    
   }
   return (
     <div className="App">
