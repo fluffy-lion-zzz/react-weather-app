@@ -25,23 +25,6 @@ it("collects data", async () => {
   expect(res).toEqual({ base: "stations", clouds: { all: 6 }, cod: 200 });
 });
 
-// it("handles failure", () => {
-//   server.use(
-//     rest.get(
-//       "http://api.openweathermap.org/data/2.5/weather",
-//       (req, res, ctx) => {
-//         return res(ctx.json({ message: "error" }), ctx.status(401));
-//       }
-//     )
-//   );
-//   return expect(collect()).rejects.toEqual({ message: "error" });
-// });
-
-// CAN SEE WHAT IS BEING RECIEVED WITH THIS FAILED TEST
-// it("collects data", async () => {
-//     const res = await collect()
-//     expect(res).toBeFalsy()
-// })
 it("handles failure", () => {
   server.use(
     rest.get(
