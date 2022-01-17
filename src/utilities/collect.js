@@ -1,9 +1,9 @@
 require("dotenv").config();
 
-export const collect = async () => {
+export const collect = async (input) => {
   const key = process.env.REACT_APP_API_KEY;
   const res = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=london&appid=${key}`
+    `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${key}`
   );
   const data = await res.json();
   if (res.status !== 200) {
@@ -11,3 +11,4 @@ export const collect = async () => {
   }
   return data;
 };
+
