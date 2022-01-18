@@ -1,38 +1,29 @@
 .App {
+  height: 100vh;
   text-align: center;
+  font-size: 26px;
+  color: #000;
+  position:relative;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: url('./images/clouds.jpg') 0% 0% no-repeat;
+  background-size: 100%;
+  animation-name: MOVE-BG;
+  animation-duration: 100s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes MOVE-BG {
   from {
-    transform: rotate(0deg);
+    transform: translateX(0);
   }
-  to {
-    transform: rotate(360deg);
+  to { 
+    transform: translateX(-187%);
   }
 }

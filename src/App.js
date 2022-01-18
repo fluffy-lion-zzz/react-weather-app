@@ -57,7 +57,8 @@ function App() {
       </ul>
       <h2>searching in the city: {input}</h2>
       <button onClick={handleFetch}>fetch</button>
-      <button onClick={handleSuggestion}>suggest</button>
+      <div class="bg"></div>
+      {/* <button onClick={handleSuggestion}>suggest</button> */}
     </div>
   );
 }
