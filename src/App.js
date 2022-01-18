@@ -7,7 +7,7 @@ require('dotenv').config()
 function App() {
   const [data, setData] = useState("")
   const [error, setError] = useState({ error: false, status: "" })
-  const [input, setInput] = useState("manchester")
+  const [input, setInput] = useState("")
   const [suggest, setSuggest] = useState([])
   const [suggestError, setSuggestError] = useState("")
   const handleFetch = async () => {
@@ -20,20 +20,41 @@ function App() {
   }
 
   const handleSuggestion = async () => {
-    try {
-      let newData = await suggestion(input)
-      setSuggest(newData)
-    } catch(e) {
-      setSuggestError("error")
+    if(input){
+      try {
+        let newData = await suggestion(input)
+        let items = await newData.features.map((item, index) => {
+          return item.properties.city ? item.properties.city : null
+        })
+        items = new Set(items)
+        let array = [...items]
+        setSuggest(array)
+      } catch(e) {
+        setSuggestError("error")
+      }
     }
   }
-  // useEffect(() => {
-  //   handleSuggestion()
-  // },[input])
+// check
+  const updateInput = (item) => {
+    let value = item.toLowerCase()
+    setInput(value)
+    setSuggest([])
+  }
+  useEffect(() => {
+    handleSuggestion()
+  },[input])
   return (
     <div className="App">
       <h1>weather</h1>
-      <input onChange={(e) => setInput(e.target.value)}/>
+      <input value={input} onChange={(e) => setInput(e.target.value)}/>
+      <ul>
+        { suggest && 
+            // suggest[0].toLowerCase() !== input.toLowerCase() &&
+              suggest.map((item, index) => {
+                return item !== null && <li key={index} onClick={() => updateInput(item)}>{item}</li>
+              }) 
+        }
+      </ul>
       <h2>searching in the city: {input}</h2>
       <button onClick={handleFetch}>fetch</button>
       <button onClick={handleSuggestion}>suggest</button>
