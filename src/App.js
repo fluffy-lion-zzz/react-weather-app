@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react'
 import { collect } from './utilities/collect'
 import { suggestion } from './utilities/suggestion'
+import Result from './Components/Results';
 require('dotenv').config()
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
       <h2>searching in the city: {input}</h2>
       <button onClick={handleFetch}>fetch</button>
       <div class="bg"></div>
+      <Result />
       {/* <button onClick={handleSuggestion}>suggest</button> */}
     </div>
   );
