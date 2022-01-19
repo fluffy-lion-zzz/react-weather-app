@@ -4,10 +4,14 @@ import styled, { keyframes } from 'styled-components';
 import { collect } from './utilities/collect'
 import { suggestion } from './utilities/suggestion'
 
+
 import img1 from './images/clouds.jpg'
 import img2 from'./images/clouds2.jpg'
 import img3 from './images/sun.jpg'
 import img4 from './images/wind.jpg'
+
+import Result from './Components/Results';
+
 require('dotenv').config()
 
 // const move = keyframes`
@@ -91,6 +95,7 @@ function App() {
 
   return (
     <div className="App">
+
       <div>
         <h1>weather</h1>
         <input value={input} onChange={(e) => setInput(e.target.value)}/>
@@ -118,6 +123,10 @@ function App() {
 
       </div>
       {/* <Back></Back> */}
+
+      <div class="bg"></div>
+      <Result />
+
       {/* <button onClick={handleSuggestion}>suggest</button> */}
     </div>
   );
