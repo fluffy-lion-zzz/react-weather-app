@@ -1,29 +1,16 @@
-.App {
-  height: 100vh;
-  text-align: center;
-  font-size: 26px;
-  color: #000;
-  position:relative;
-}
-.bg {
+.image {
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
-  z-index: -1;
-  background: url('./images/clouds.jpg') 0% 0% no-repeat;
-  background-size: 100%;
-  animation-name: MOVE-BG;
-  animation-duration: 100s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  overflow: hidden;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transition: opacity 1s ease;
+  opacity: 0;
 }
-@keyframes MOVE-BG {
-  from {
-    transform: translateX(0);
-  }
-  to { 
-    transform: translateX(-187%);
-  }
+
+.active {
+    opacity: 1;
 }
