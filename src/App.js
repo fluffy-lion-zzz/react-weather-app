@@ -86,7 +86,7 @@ function App() {
           handleFetch={handleFetch}
           />
           :
-          <Result />
+          <Result data={data}/>
         }
       </div>
       {/* <Back></Back> */}
