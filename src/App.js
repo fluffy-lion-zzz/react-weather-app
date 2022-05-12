@@ -8,30 +8,6 @@ import Result from "./Components/Results";
 import Home from "./Components/Home";
 
 require("dotenv").config();
-
-// const move = keyframes`
-//   from {
-//     transform: translateX(0);
-//   }
-//   to {
-//     transform: translateX(-550px);
-//   }
-// `
-
-// const Back = styled.div `
-//   position: absolute;
-//   left: 0;
-//   right: -550px;
-//   top: 0;
-//   bottom: 0;
-//   z-index: -1;
-//   background: url(${img1}) 0% 0% repeat;
-//   background-size: 100%;
-//   animation-name: ${move};
-//   animation-duration: 10s;
-//   animation-timing-function: linear;
-//   animation-iteration-count: infinite;
-// `
 function App() {
   const [data, setData] = useState("");
   const [error, setError] = useState({ error: false, status: "" });
