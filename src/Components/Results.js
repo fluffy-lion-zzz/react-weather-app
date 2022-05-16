@@ -4,6 +4,7 @@ import ExtraInfo from "./ExtraInfo";
 const Result = ({ data }) => {
   return (
     <div label="result" style={{ backgroundColor: "rgb(205, 237, 246" }}>
+    {data &&
       <div style={{ border: "solid red 5px" }}>
         <h1>{data.name}</h1>
         <h3>{data.sys.country}</h3>
@@ -15,6 +16,7 @@ const Result = ({ data }) => {
           <ExtraInfo wind={data.wind.speed} sunrise={data.sys.sunrise} sunset={data.sys.sunset}/>
         </div>
       </div>
+  }
     </div>
   );
 };

@@ -1,9 +1,18 @@
+// REACT ICONS INSTALLED!!!!
+
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import {
+    BrowserRouter,
+    Routes,
+    Route
+} from 'react-router-dom'
+
+// utils
 import { collect } from "./utilities/collect";
 import { suggestion } from "./utilities/suggestion";
-
+// components
 import Result from "./Components/Results";
 import Home from "./Components/Home";
 
@@ -15,6 +24,10 @@ function App() {
   const [suggest, setSuggest] = useState([]);
   const [suggestError, setSuggestError] = useState("");
   const [showResult, setShowResult] = useState(false)
+  // >>> used for manual test 
+  const [test, setTest] = useState("")
+  // >>> used for manual test 
+
   const handleFetch = async () => {
     try {
       let newData = await collect(input);
@@ -32,6 +45,8 @@ function App() {
         let items = await newData.features.map((item, index) => {
           return item.properties.city ? item.properties.city : null;
         });
+        // using set so we dont get a repeating value
+        // "a value in set may only occur once" mdn
         items = new Set(items);
         let array = [...items];
         setSuggest(array);
@@ -52,7 +67,9 @@ function App() {
 
   return (
     <div className="App">
+
       <div>
+
         {!showResult ? 
           <Home
           input={input}
