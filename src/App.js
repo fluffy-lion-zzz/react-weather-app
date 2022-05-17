@@ -15,6 +15,7 @@ import { suggestion } from "./utilities/suggestion";
 // components
 import Result from "./Components/Results";
 import Home from "./Components/Home";
+import { mockLondon } from "./utilities/mock";
 
 require("dotenv").config();
 function App() {
@@ -28,6 +29,9 @@ function App() {
   const [test, setTest] = useState("")
   // >>> used for manual test 
 
+  const getMock = () => {
+    setData(mockLondon)
+  }
   const handleFetch = async () => {
     try {
       let newData = await collect(input);
@@ -62,7 +66,8 @@ function App() {
     setSuggest([]);
   };
   useEffect(() => {
-    handleSuggestion();
+    // handleSuggestion();
+    getMock()
   }, [input]);
 
   return (
@@ -70,7 +75,6 @@ function App() {
 
       <div>
 
-        {!showResult ? 
           <Home
           input={input}
           setInput={setInput}
@@ -78,9 +82,10 @@ function App() {
           updateInput={updateInput}
           handleFetch={handleFetch}
           />
-          :
+          {data && 
           <Result data={data}/>
-        }
+           } 
+        
       </div>
       {/* <Back></Back> */}
 

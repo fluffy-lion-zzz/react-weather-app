@@ -7,7 +7,7 @@ import "../Styles/Background.css";
 const Background = () => {
   const images = [img1, img2, img3, img4];
   const [currentSlide, setCurrentSlide] = useState(0);
-  let animationTime = 5000
+  let animationTime = 6000;
   // useRef does not cause a re-render
   let sliderInterval = useRef();
   let switchImages = () => {
@@ -28,6 +28,7 @@ const Background = () => {
   return (
     <div className="imgWrapper">
       {images.map((img, index) => {
+        let top = index === 3 ? 0 : index + 1;
         return (
           <img
             src={img}
@@ -42,4 +43,4 @@ const Background = () => {
   );
 };
 
-export default Background
+export default Background;
