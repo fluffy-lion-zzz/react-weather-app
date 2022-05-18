@@ -1,5 +1,5 @@
 import SmallCard from "./SmallCard";
-
+import { WiSunrise, WiSunset, WiWindy } from 'react-icons/wi'
 import styled from "styled-components";
 
 const ExtraContainer = styled.div`
@@ -17,9 +17,9 @@ const ExtraInfo = ({ wind, sunrise, sunset }) => {
   let pmTime = timeConverter(sunset);
   return (
     <ExtraContainer>
-      <SmallCard info={wind} />
-      <SmallCard info={amTime} />
-      <SmallCard info={pmTime} />
+      <SmallCard info={wind} icon={<WiWindy />}/>
+      <SmallCard info={amTime} icon={<WiSunrise />}/>
+      <SmallCard info={pmTime} icon={<WiSunset />}/>
     </ExtraContainer>
   );
 };

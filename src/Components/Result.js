@@ -1,12 +1,11 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
 import styled, { keyframes } from "styled-components";
-import { ContentStyled } from "../Styles/styles";
+import { ContentStyled } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
 const ResultStyled = styled(motion.div)`
-  border: solid red 3px;
-  margin: auto;
+  border: solid blue 3px;
   position: relative;
   z-index: 1;
 `;

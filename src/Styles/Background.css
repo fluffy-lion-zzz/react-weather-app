@@ -12,11 +12,6 @@
   box-sizing: border-box;
   border: solid 3px red;
 }
-.content {
-  z-index: 1;
-  position: absolute;
-  background-color: rgba(240, 248, 255, 0.621);
-}
 @keyframes blender {
   0% {
     opacity: 0;
@@ -43,7 +38,4 @@
   opacity: 0;
   animation: blender linear 50ms;
   /* animation time now in js file */
-}
-.top {
-  
 }

@@ -13,7 +13,7 @@ import {
 import { collect } from "./utilities/collect";
 import { suggestion } from "./utilities/suggestion";
 // components
-import Result from "./Components/Results";
+import Result from "./Components/Result";
 import Home from "./Components/Home";
 import { mockLondon } from "./utilities/mock";
 
@@ -33,6 +33,7 @@ function App() {
     setData(mockLondon)
   }
   const handleFetch = async () => {
+    console.log("fetched")
     try {
       let newData = await collect(input);
       setData(newData);
@@ -66,6 +67,7 @@ function App() {
     setSuggest([]);
   };
   useEffect(() => {
+    // using mock data
     // handleSuggestion();
     getMock()
   }, [input]);
