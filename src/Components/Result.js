@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { ContentStyled } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 const ResultStyled = styled(motion.div)`
   border: solid blue 3px;
   position: relative;
@@ -11,9 +12,16 @@ const ResultStyled = styled(motion.div)`
 `;
 
 const Result = ({ data }) => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <div label="result" style={{ backgroundColor: "rgb(205, 237, 246" }}>
-      {data && (
+      {!loading && data ? (
         // <ContentStyled>
         <ResultStyled>
           <h1>{data.name}</h1>
@@ -35,7 +43,9 @@ const Result = ({ data }) => {
             />
           </div>
         </ResultStyled>
+      ) : (
         // </ContentStyled>
+        <p>loading...</p>
       )}
     </div>
   );

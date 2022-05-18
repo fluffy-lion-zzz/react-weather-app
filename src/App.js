@@ -3,11 +3,7 @@
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import {
-    BrowserRouter,
-    Routes,
-    Route
-} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // utils
 import { collect } from "./utilities/collect";
@@ -24,20 +20,25 @@ function App() {
   const [input, setInput] = useState("");
   const [suggest, setSuggest] = useState([]);
   const [suggestError, setSuggestError] = useState("");
-  const [showResult, setShowResult] = useState(false)
-  // >>> used for manual test 
-  const [test, setTest] = useState("")
-  // >>> used for manual test 
-
+  const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(true);
+  // >>> used for manual test
+  const [test, setTest] = useState("");
+  // >>> used for manual test
+  const loader = () => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
+  };
   const getMock = () => {
-    setData(mockLondon)
-  }
+    setData(mockLondon);
+  };
   const handleFetch = async () => {
-    console.log("fetched")
+    console.log("fetched");
     try {
       let newData = await collect(input);
       setData(newData);
-      setShowResult(true)
+      setShowResult(true);
     } catch (e) {
       setError({ error: e.message, status: e.status });
     }
@@ -67,32 +68,35 @@ function App() {
     setSuggest([]);
   };
   useEffect(() => {
+    loader(setLoading)
+  }, [])
+  useEffect(() => {
     // using mock data
     // handleSuggestion();
-    getMock()
+    getMock();
   }, [input]);
 
   return (
     <div className="App">
-
       <div>
-
-          <Home
-          input={input}
-          setInput={setInput}
-          suggest={suggest}
-          updateInput={updateInput}
-          handleFetch={handleFetch}
-          />
-          {data && 
-          <Result data={data}/>
-           } 
-        
+        {loading ? (
+          <p>loading...</p>
+        ) : (
+          <>
+            <Home
+              input={input}
+              setInput={setInput}
+              suggest={suggest}
+              updateInput={updateInput}
+              handleFetch={handleFetch}
+            />
+            {data && <Result loader={loader} setLoading={setLoading} loading={loading} data={data} />}
+          </>
+        )}
       </div>
       {/* <Back></Back> */}
 
       {/* <div class="bg"></div> */}
-      
 
       {/* <button onClick={handleSuggestion}>suggest</button> */}
     </div>
