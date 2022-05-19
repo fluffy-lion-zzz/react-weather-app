@@ -12,6 +12,7 @@ import { suggestion } from "./utilities/suggestion";
 import Result from "./Components/Result";
 import Home from "./Components/Home";
 import { mockLondon } from "./utilities/mock";
+import Loader from './Components/Loader'
 
 require("dotenv").config();
 function App() {
@@ -28,7 +29,7 @@ function App() {
   const loader = () => {
     setTimeout(() => {
       setLoading(false)
-    }, 1000);
+    }, 6000);
   };
   const getMock = () => {
     setData(mockLondon);
@@ -78,9 +79,9 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <>
         {loading ? (
-          <p>loading...</p>
+          <Loader />
         ) : (
           <>
             <Home
@@ -93,7 +94,7 @@ function App() {
             {data && <Result loader={loader} setLoading={setLoading} loading={loading} data={data} />}
           </>
         )}
-      </div>
+      </>
       {/* <Back></Back> */}
 
       {/* <div class="bg"></div> */}

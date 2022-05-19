@@ -5,6 +5,7 @@ import { ContentStyled } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Loader from "./Loader";
 const ResultStyled = styled(motion.div)`
   border: solid blue 3px;
   position: relative;
@@ -45,7 +46,7 @@ const Result = ({ data }) => {
         </ResultStyled>
       ) : (
         // </ContentStyled>
-        <p>loading...</p>
+        <Loader loading={loading} />
       )}
     </div>
   );
