@@ -12,7 +12,7 @@ import { suggestion } from "./utilities/suggestion";
 import Result from "./Components/Result";
 import Home from "./Components/Home";
 import { mockLondon } from "./utilities/mock";
-import Loader from './Components/Loader'
+import Loader from "./Components/Loader";
 
 require("dotenv").config();
 function App() {
@@ -28,7 +28,7 @@ function App() {
   // >>> used for manual test
   const loader = () => {
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
     }, 6000);
   };
   const getMock = () => {
@@ -69,8 +69,8 @@ function App() {
     setSuggest([]);
   };
   useEffect(() => {
-    loader(setLoading)
-  }, [])
+    loader(setLoading);
+  }, []);
   useEffect(() => {
     // using mock data
     // handleSuggestion();
@@ -91,7 +91,14 @@ function App() {
               updateInput={updateInput}
               handleFetch={handleFetch}
             />
-            {data && <Result loader={loader} setLoading={setLoading} loading={loading} data={data} />}
+            {data && (
+              <Result
+                loader={loader}
+                setLoading={setLoading}
+                loading={loading}
+                data={data}
+              />
+            )}
           </>
         )}
       </>
