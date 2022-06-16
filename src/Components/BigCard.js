@@ -1,11 +1,13 @@
+import { MainText, SubText } from "../Styles/Styles";
+
 const BigCard = ({ text, secondaryText, imgText, imgSrc }) => {
   let url = `http://openweathermap.org/img/wn/${imgSrc}@2x.png`;
   return (
     <>
-      <h2>{text}</h2>
+      <MainText>{text}</MainText>
       {secondaryText && (
         <>
-          <h3>{secondaryText}</h3>
+          <SubText>{secondaryText}</SubText>
           <img src={url} />
         </>
       )}

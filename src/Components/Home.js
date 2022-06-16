@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import Background from "./Background";
-import { ContentStyled } from "../Styles/Styles";
+import { ContentStyled, MainText } from "../Styles/Styles";
 
 const Home = ({ input, setInput, suggest, updateInput, handleFetch }) => {
   return (
     <div>
       <Background />
       <ContentStyled>
-        <h1>home</h1>
+        <h1>What's Weather Like?</h1>
         <form onSubmit={handleFetch}>
           <input
             className="userInput"
@@ -26,7 +26,7 @@ const Home = ({ input, setInput, suggest, updateInput, handleFetch }) => {
                 );
               })}
           </ul>
-          <h2>searching in the city: {input}</h2>
+          <MainText>searching in the city: {input}</MainText>
           <button type="submit" value="submit">
             fetch
           </button>

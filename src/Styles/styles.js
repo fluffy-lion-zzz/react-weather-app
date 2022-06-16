@@ -7,3 +7,10 @@ export const ContentStyled = styled.div`
   background-color: rgba(240, 248, 255, 0.621);
 `;
 export const H2Content = styled.h2``;
+
+export const MainText = styled.h3 `
+  background-color: red;
+`;
+export const SubText = styled.p `
+  background-color: green;
+`

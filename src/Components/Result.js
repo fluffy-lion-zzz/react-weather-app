@@ -1,7 +1,7 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
 import styled, { keyframes } from "styled-components";
-import { ContentStyled } from "../Styles/Styles";
+import { ContentStyled, MainText } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -25,8 +25,8 @@ const Result = ({ data }) => {
       {!loading && data ? (
         // <ContentStyled>
         <ResultStyled>
-          <h1>{data.name}</h1>
-          <h3>{data.sys.country}</h3>
+          <MainText>{data.name}</MainText>
+          <MainText>{data.sys.country}</MainText>
           <div style={{ border: "solid aqua 5px" }}>
             <BigCard
               imgText="weatherlogo"
