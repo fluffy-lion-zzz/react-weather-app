@@ -4,26 +4,8 @@
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 99vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-/* 
-.image {
-  position: relative;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  transition: opacity 1s ease;
-  opacity: 0;
-}
-
-.active {
-    opacity: 1;
-} */
