@@ -5,7 +5,7 @@ import { ContentStyled, MainText } from "../Styles/Styles";
 const Home = ({ input, setInput, suggest, updateInput, handleFetch }) => {
   return (
     <div>
-      <Background />
+      {/* <Background /> */}
       <ContentStyled>
         <h1>What's Weather Like?</h1>
         <form onSubmit={handleFetch}>

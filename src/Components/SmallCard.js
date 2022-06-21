@@ -1,8 +1,5 @@
-import styled from "styled-components";
-import { SubText } from "../Styles/Styles";
-const SmallContainer = styled.div`
-  border: solid purple 5px;
-`;
+import { SubText, SmallContainer } from "../Styles/Styles";
+
 const SmallCard = ({ info, icon }) => {
   return (
     <SmallContainer>

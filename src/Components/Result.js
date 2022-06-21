@@ -1,16 +1,12 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
 import styled, { keyframes } from "styled-components";
-import { ContentStyled, MainText } from "../Styles/Styles";
+import { ContentStyled, MainText, ResultStyled } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
-const ResultStyled = styled(motion.div)`
-  border: solid blue 3px;
-  position: relative;
-  z-index: 1;
-`;
+
 
 const Result = ({ data }) => {
   const [loading, setLoading] = useState(true);
@@ -27,7 +23,7 @@ const Result = ({ data }) => {
         <ResultStyled>
           <MainText>{data.name}</MainText>
           <MainText>{data.sys.country}</MainText>
-          <div style={{ border: "solid aqua 5px" }}>
+          <div>
             <BigCard
               imgText="weatherlogo"
               imgSrc={data.weather[0].icon}
