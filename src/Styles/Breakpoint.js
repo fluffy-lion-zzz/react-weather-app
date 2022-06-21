@@ -9,3 +9,4 @@ const device = {
     md: `(min-width: ${size.md})`,
     lg: `(min-width: ${size.lg})`
 }
+export default {size, device}
