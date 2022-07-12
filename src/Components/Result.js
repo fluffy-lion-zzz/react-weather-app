@@ -1,12 +1,11 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
 import styled, { keyframes } from "styled-components";
-import { ContentStyled, MainText, ResultStyled } from "../Styles/Styles";
+import { ContentStyled, MainText, ResultStyled, MainTextContainer } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
-
 
 const Result = ({ data }) => {
   const [loading, setLoading] = useState(true);
@@ -21,8 +20,10 @@ const Result = ({ data }) => {
       {!loading && data ? (
         // <ContentStyled>
         <ResultStyled>
-          <MainText>{data.name}</MainText>
-          <MainText>{data.sys.country}</MainText>
+          <MainTextContainer>
+            <MainText>{data.name}</MainText>
+            <MainText>{data.sys.country}</MainText>
+          </MainTextContainer>
           <div>
             <BigCard
               imgText="weatherlogo"

@@ -23,6 +23,7 @@ function App() {
   const [suggestError, setSuggestError] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [clicked, setClicked] = useState(false)
   // >>> used for manual test
   const [test, setTest] = useState("");
   // >>> used for manual test
@@ -31,10 +32,11 @@ function App() {
       setLoading(false);
     }, 6000);
   };
-  const getMock = () => {
-    setData(mockLondon);
-  };
-  const handleFetch = async () => {
+  // const getMock = () => {
+  //   setData(mockLondon);
+  // };
+  const handleFetch = async (e) => {
+    e.preventDefault()
     console.log("fetched");
     try {
       let newData = await collect(input);
@@ -52,11 +54,11 @@ function App() {
         let items = await newData.features.map((item, index) => {
           return item.properties.city ? item.properties.city : null;
         });
-        // using set so we dont get a repeating value
-        // "a value in set may only occur once" mdn
         items = new Set(items);
-        let array = [...items];
-        setSuggest(array);
+        let array = [...items]
+        let update = array.map(item => ({item: item, clicked: false}))
+
+        setSuggest(update);
       } catch (e) {
         setSuggestError("error");
       }
@@ -72,9 +74,9 @@ function App() {
     loader(setLoading);
   }, []);
   useEffect(() => {
-    // using mock data
-    // handleSuggestion();
-    getMock();
+   if(!clicked){
+     handleSuggestion();
+   }
   }, [input]);
 
   return (
@@ -90,6 +92,7 @@ function App() {
               suggest={suggest}
               updateInput={updateInput}
               handleFetch={handleFetch}
+              setClicked={setClicked}
             />
             {data && (
               <Result

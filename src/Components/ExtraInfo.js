@@ -1,10 +1,7 @@
 import SmallCard from "./SmallCard";
 import { WiSunrise, WiSunset, WiWindy } from 'react-icons/wi'
-import styled from "styled-components";
+import { ExtraContainer } from "../Styles/Styles";
 
-const ExtraContainer = styled.div`
-  border: solid azure 5px;
-`;
 const ExtraInfo = ({ wind, sunrise, sunset }) => {
   let timeConverter = (unix) => {
     let date = new Date(unix * 1000);

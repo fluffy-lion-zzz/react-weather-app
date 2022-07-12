@@ -2,7 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import Background from "./Background";
 import { ContentStyled, MainText } from "../Styles/Styles";
 
-const Home = ({ input, setInput, suggest, updateInput, handleFetch }) => {
+const Home = ({ input, setInput, suggest, updateInput, handleFetch, setClicked }) => {
+
+  const handler = ({ item }) => {
+    updateInput(item)
+    setClicked(true)
+  }
   return (
     <div>
       {/* <Background /> */}
@@ -19,8 +24,8 @@ const Home = ({ input, setInput, suggest, updateInput, handleFetch }) => {
               suggest.map((item, index) => {
                 return (
                   item !== null && (
-                    <li key={index} onClick={() => updateInput(item)}>
-                      {item}
+                    <li key={index} onClick={() => handler(item)}>
+                      {item.item}
                     </li>
                   )
                 );
