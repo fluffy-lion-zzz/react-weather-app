@@ -11,7 +11,7 @@ import { suggestion } from "./utilities/suggestion";
 // components
 import Result from "./Components/Result";
 import Home from "./Components/Home";
-import { mockLondon } from "./utilities/mock";
+import { mockLondon, mockSuggest } from "./utilities/mock";
 import Loader from "./Components/Loader";
 
 require("dotenv").config();
@@ -24,17 +24,19 @@ function App() {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(true);
   const [clicked, setClicked] = useState(false)
+  const search = useRef("")
   // >>> used for manual test
   const [test, setTest] = useState("");
   // >>> used for manual test
   const loader = () => {
     setTimeout(() => {
       setLoading(false);
-    }, 6000);
+    }, 100);
   };
-  // const getMock = () => {
-  //   setData(mockLondon);
-  // };
+  const getMocks = () => {
+    setData(mockLondon);
+    setSuggest(mockSuggest)
+  };
   const handleFetch = async (e) => {
     e.preventDefault()
     console.log("fetched");
@@ -42,6 +44,8 @@ function App() {
       let newData = await collect(input);
       setData(newData);
       setShowResult(true);
+      setClicked(false)
+      setInput("")
     } catch (e) {
       setError({ error: e.message, status: e.status });
     }
@@ -56,9 +60,8 @@ function App() {
         });
         items = new Set(items);
         let array = [...items]
-        let update = array.map(item => ({item: item, clicked: false}))
-
-        setSuggest(update);
+        // let update = array.map(item => ({item: item, clicked: false}))
+        setSuggest(array);
       } catch (e) {
         setSuggestError("error");
       }
@@ -72,12 +75,16 @@ function App() {
   };
   useEffect(() => {
     loader(setLoading);
+    // mock data
+    getMocks()
   }, []);
-  useEffect(() => {
-   if(!clicked){
-     handleSuggestion();
-   }
-  }, [input]);
+  
+  // useEffect(() => {
+  //   search.current = input
+  //  if(!clicked){
+  //    handleSuggestion();
+  //  }
+  // }, [input]);
 
   return (
     <div className="App">
@@ -93,6 +100,7 @@ function App() {
               updateInput={updateInput}
               handleFetch={handleFetch}
               setClicked={setClicked}
+              search={search.current}
             />
             {data && (
               <Result

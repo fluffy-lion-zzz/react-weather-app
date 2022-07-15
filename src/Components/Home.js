@@ -1,41 +1,27 @@
 import { useState, useRef, useEffect } from "react";
 import Background from "./Background";
-import { ContentStyled, MainText } from "../Styles/Styles";
+import { ContentStyled, Heading, MainTextContainer } from "../Styles/Styles";
+import Form from "./Form";
 
-const Home = ({ input, setInput, suggest, updateInput, handleFetch, setClicked }) => {
+const Home = ({ input, setInput, suggest, updateInput, handleFetch, setClicked, search }) => {
 
-  const handler = ({ item }) => {
-    updateInput(item)
-    setClicked(true)
-  }
+
   return (
     <div>
       {/* <Background /> */}
       <ContentStyled>
-        <h1>What's Weather Like?</h1>
-        <form onSubmit={handleFetch}>
-          <input
-            className="userInput"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <ul>
-            {suggest &&
-              suggest.map((item, index) => {
-                return (
-                  item !== null && (
-                    <li key={index} onClick={() => handler(item)}>
-                      {item.item}
-                    </li>
-                  )
-                );
-              })}
-          </ul>
-          <MainText>searching in the city: {input}</MainText>
-          <button type="submit" value="submit">
-            fetch
-          </button>
-        </form>
+        <MainTextContainer header >
+          <Heading>What's Weather Like?</Heading>
+        </MainTextContainer>
+        <Form 
+        input={input}
+        setInput={setInput}
+        suggest={suggest}
+        updateInput={updateInput}
+        handleFetch={handleFetch}
+        setClicked={setClicked}
+        search={search}
+        />
       </ContentStyled>
     </div>
   );

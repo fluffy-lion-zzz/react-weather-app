@@ -41,3 +41,5 @@ export const mockLondon = {
   name: "London",
   cod: 200,
 };
+
+export const mockSuggest = ["Llanuwchllyn", "City of London", "London"]
