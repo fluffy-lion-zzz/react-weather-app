@@ -8,7 +8,7 @@ const Home = ({ input, setInput, suggest, updateInput, handleFetch, setClicked, 
 
   return (
     <div>
-      {/* <Background /> */}
+      <Background />
       <ContentStyled>
         <MainTextContainer header >
           <Heading>What's Weather Like?</Heading>

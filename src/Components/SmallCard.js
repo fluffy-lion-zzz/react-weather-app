@@ -1,4 +1,4 @@
-import { SubText, SmallContainer } from "../Styles/Styles";
+import { SubText, SmallContainer, Icon, WindyIcon, SunsetIcon, SunriseIcon } from "../Styles/Styles";
 
 const SmallCard = ({ info, icon }) => {
   return (
@@ -6,7 +6,9 @@ const SmallCard = ({ info, icon }) => {
       {info && (
         <>
           <SubText>{info}</SubText>
-          {icon}
+          {icon === "windy" && <WindyIcon />}
+          {icon == "sunset" && <SunsetIcon />}
+          {icon == "sunrise" && <SunriseIcon />}
         </>
       )}
     </SmallContainer>

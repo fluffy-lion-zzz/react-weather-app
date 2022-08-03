@@ -8,14 +8,15 @@
   z-index: 0;
   position: fixed;
   width: 100vw;
+  left: 0px;
   height: 100vh;
   box-sizing: border-box;
-  border: solid 3px red;
+  border: solid 3px limegreen;
 }
 @keyframes blender {
   0% {
     opacity: 0;
-    transform: translate(-25px);
+    transform: translate(-20px);
   }
   30% {
     opacity: 1;
@@ -25,9 +26,47 @@
   }
   100% {
     opacity: 0;
-    transform: translate(0px);
+    transform: translate(-100px);
   }
 }
+@media only screen and (min-width: 425px) {
+  @keyframes blender {
+    0% {
+      opacity: 0;
+      transform: translate(-40px);
+    }
+    30% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-140px);
+    }
+  }
+}
+@media only screen and (min-width: 768px) {
+  @keyframes blender {
+    0% {
+      opacity: 0;
+      transform: translate(-460px);
+    }
+    30% {
+      opacity: 0.5;
+    }
+    70% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-500px);
+    }
+  }
+
+}
+
 .imageActive {
   float: left;
   width: 150vw;
@@ -37,5 +76,6 @@
   box-sizing: border-box;
   opacity: 0;
   animation: blender linear 50ms;
+  /* background-size:contain; */
   /* animation time now in js file */
 }

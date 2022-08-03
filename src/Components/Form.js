@@ -1,4 +1,4 @@
-import { Button, MainText, FormContainer, InputContainer, Input, DisplaySearch } from "../Styles/Styles";
+import { Button, MainText, FormContainer, InputContainer, Input, DisplaySearch, UnorderedList, ListItem } from "../Styles/Styles";
 const Form = ({
   handleFetch,
   input,
@@ -33,18 +33,18 @@ const Form = ({
           &#10007;
         </Button>
       </InputContainer>
-      <ul>
+      <UnorderedList>
         {suggest &&
           suggest.map((item, index) => {
             return (
               item !== null && (
-                <li key={index} onClick={() => handler(item)}>
+                <ListItem key={index} onClick={() => handler(item)}>
                   {item}
-                </li>
+                </ListItem>
               )
             );
           })}
-      </ul>
+      </UnorderedList>
       <DisplaySearch>
         <MainText>searching in the city:</MainText>
         <MainText>{search}</MainText>

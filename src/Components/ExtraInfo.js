@@ -14,9 +14,9 @@ const ExtraInfo = ({ wind, sunrise, sunset }) => {
   let pmTime = timeConverter(sunset);
   return (
     <ExtraContainer>
-      <SmallCard info={wind} icon={<WiWindy />}/>
-      <SmallCard info={amTime} icon={<WiSunrise />}/>
-      <SmallCard info={pmTime} icon={<WiSunset />}/>
+      <SmallCard info={wind} icon="windy"/>
+      <SmallCard info={amTime} icon="sunrise"/>
+      <SmallCard info={pmTime} icon="sunset"/>
     </ExtraContainer>
   );
 };

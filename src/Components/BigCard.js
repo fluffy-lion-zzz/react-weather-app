@@ -1,17 +1,21 @@
-import { MainText, SubText } from "../Styles/Styles";
+import { FlexContainer, MainText, SubText, Img } from "../Styles/Styles";
 
-const BigCard = ({ text, secondaryText, imgText, imgSrc }) => {
+const BigCard = ({ text, secondaryText, imgText, imgSrc, temp }) => {
   let url = `http://openweathermap.org/img/wn/${imgSrc}@2x.png`;
   return (
-    <>
+    <FlexContainer>
+      {temp ? 
+      <MainText>temp: {temp}</MainText>
+      :
       <MainText>{text}</MainText>
+    }
       {secondaryText && (
         <>
           <SubText>{secondaryText}</SubText>
-          <img src={url} />
+          <Img src={url} />
         </>
       )}
-    </>
+    </FlexContainer>
   );
 };
 export default BigCard;
