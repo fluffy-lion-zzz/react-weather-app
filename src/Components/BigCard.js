@@ -5,7 +5,7 @@ const BigCard = ({ text, secondaryText, imgText, imgSrc, temp }) => {
   return (
     <FlexContainer>
       {temp ? 
-      <MainText>temp: {temp}</MainText>
+      <MainText>{temp}°C</MainText>
       :
       <MainText>{text}</MainText>
     }

@@ -6,12 +6,12 @@ const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid red 4px;
+  // border: solid red 4px;
 `;
 const Loader = ({ loading }) => {
   return (
     <LoaderWrapper>
-      <GridLoader color={"blue"} size={30} loading={loading} />
+      <GridLoader color={"grey"} size={30} loading={loading} />
     </LoaderWrapper>
   );
 };

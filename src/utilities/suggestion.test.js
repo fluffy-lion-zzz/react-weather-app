@@ -64,21 +64,24 @@ describe("suggester", () => {
   });
 
   it("handles failure", () => {
-      server.use(
-          rest.get(
-            "https://api.geoapify.com/v1/geocode/autocomplete",
-            (req, res, ctx) => {
-                return res(
-                    ctx.json({
-                    statusCode: 401,
-                    error: "Unauthorized",
-                    message: "Invalid apiKey"
-                  }),
-                  ctx.status(401)
-                  )
-            }
-          )
+    server.use(
+      rest.get(
+        "https://api.geoapify.com/v1/geocode/autocomplete",
+        (req, res, ctx) => {
+          return res(
+            ctx.json({
+              statusCode: 401,
+              error: "Unauthorized",
+              message: "Invalid apiKey",
+            }),
+            ctx.status(401)
+          );
+        }
       )
-      return expect(suggestion()).rejects.toEqual({ message: "Invalid apiKey", status: 401 })
-  })
+    );
+    return expect(suggestion()).rejects.toEqual({
+      message: "Invalid apiKey",
+      status: 401,
+    });
+  });
 });

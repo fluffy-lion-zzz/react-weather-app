@@ -17,7 +17,9 @@ const Form = ({
     setClicked(false);
   };
   const focused = () => {
+    
     setClicked(false);
+    
   };
   return (
     <FormContainer onSubmit={handleFetch}>
@@ -28,6 +30,7 @@ const Form = ({
           type="text"
           onChange={(e) => setInput(e.target.value)}
           onFocus={focused}
+          onClick={(e) => e.target.select()}
         />
         <Button clearSearch type="button" onClick={clearSearch}>
           &#10007;

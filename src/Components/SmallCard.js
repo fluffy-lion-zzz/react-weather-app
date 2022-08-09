@@ -5,10 +5,10 @@ const SmallCard = ({ info, icon }) => {
     <SmallContainer>
       {info && (
         <>
-          <SubText>{info}</SubText>
           {icon === "windy" && <WindyIcon />}
           {icon == "sunset" && <SunsetIcon />}
           {icon == "sunrise" && <SunriseIcon />}
+          <SubText>{info}</SubText>
         </>
       )}
     </SmallContainer>

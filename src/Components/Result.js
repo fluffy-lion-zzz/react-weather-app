@@ -7,6 +7,7 @@ import {
   ResultStyled,
   MainTextContainer,
   SplitContainer,
+  ResultLocationText,
 } from "../Styles/Styles";
 
 import { motion } from "framer-motion";
@@ -15,11 +16,15 @@ import Loader from "./Loader";
 
 const Result = ({ data }) => {
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const loader = () => {
+    setLoading(true)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, []);
+  };
+  useEffect(() => {
+    loader()
+  }, [data]);
 
   return (
     // <div label="result" style={{ backgroundColor: "rgb(205, 237, 246" }}>
@@ -27,10 +32,10 @@ const Result = ({ data }) => {
       {!loading && data ? (
         // <ContentStyled>
         <>
-         <MainTextContainer location>
+         <ResultLocationText location>
               <MainText>{data.name}</MainText>
               <MainText>{data.sys.country}</MainText>
-          </MainTextContainer>
+          </ResultLocationText>
         <ResultStyled>
           <SplitContainer left>
             <BigCard
@@ -46,6 +51,7 @@ const Result = ({ data }) => {
               wind={data.wind.speed}
               sunrise={data.sys.sunrise}
               sunset={data.sys.sunset}
+              timezone={data.timezone}
             />
           </SplitContainer>
         </ResultStyled>

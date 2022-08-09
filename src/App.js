@@ -13,41 +13,52 @@ import Result from "./Components/Result";
 import Home from "./Components/Home";
 import { mockLondon, mockSuggest } from "./utilities/mock";
 import Loader from "./Components/Loader";
+import Error from "./Components/Error/Error";
 
 require("dotenv").config();
 function App() {
   const [data, setData] = useState("");
-  const [error, setError] = useState({ error: false, status: "" });
+  const [error, setError] = useState({ error: false, status: "", message: "" });
   const [input, setInput] = useState("");
   const [suggest, setSuggest] = useState([]);
   const [suggestError, setSuggestError] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [clicked, setClicked] = useState(false)
-  const search = useRef("")
+  const [clicked, setClicked] = useState(false);
+  const search = useRef("");
   // >>> used for manual test
   const [test, setTest] = useState("");
   // >>> used for manual test
   const loader = () => {
     setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 1000);
   };
   const getMocks = () => {
     setData(mockLondon);
-    setSuggest(mockSuggest)
+    setSuggest(mockSuggest);
   };
   const handleFetch = async (e) => {
-    e.preventDefault()
-    console.log("fetched");
+    e.preventDefault();
+    setError({ error: false, status: "", message: "" });
+    loader();
     try {
       let newData = await collect(input);
+      // console.log(newData)
+
       setData(newData);
+      if (newData.status !== 200) {
+        throw {
+          message: newData.data.message,
+          status: newData.status,
+          error: true,
+        };
+      }
       setShowResult(true);
-      setClicked(false)
-      setInput("")
+      setClicked(false);
+      setInput("");
     } catch (e) {
-      setError({ error: e.message, status: e.status });
+      setError({ message: e.message, status: e.status, error: e.error });
     }
   };
 
@@ -59,7 +70,7 @@ function App() {
           return item.properties.city ? item.properties.city : null;
         });
         items = new Set(items);
-        let array = [...items]
+        let array = [...items];
         // let update = array.map(item => ({item: item, clicked: false}))
         setSuggest(array);
       } catch (e) {
@@ -76,15 +87,15 @@ function App() {
   useEffect(() => {
     loader(setLoading);
     // mock data
-    getMocks()
+    // getMocks()
   }, []);
-  
-  // useEffect(() => {
-  //   search.current = input
-  //  if(!clicked){
-  //    handleSuggestion();
-  //  }
-  // }, [input]);
+
+  useEffect(() => {
+    search.current = input;
+    if (!clicked) {
+      handleSuggestion();
+    }
+  }, [input]);
 
   return (
     <div className="App">
@@ -102,7 +113,11 @@ function App() {
               setClicked={setClicked}
               search={search.current}
             />
-            {data && (
+            {error.error ? (
+              <>
+                <Error message={error.error} />
+              </>
+            ) : (
               <Result
                 loader={loader}
                 setLoading={setLoading}
