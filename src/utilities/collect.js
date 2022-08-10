@@ -14,5 +14,12 @@ require("dotenv").config();
 
 export const collect = async (input) => {
   const data = await fetch(`/.netlify/functions/fetch-weather?input=${input}`);
+  if(data.status === 500){
+    return {
+      message: data.statusText,
+      status: data.status,
+      error: true,
+    }
+  }
   return data.json();
 };

@@ -47,6 +47,14 @@ function App() {
       // console.log(newData)
 
       setData(newData);
+      console.log(newData)
+      if(newData.status === 500){
+        throw {
+          message: newData.message,
+          status: newData.status,
+          error: newData.error
+        }
+      }
       if (newData.status !== 200) {
         throw {
           message: newData.data.message,

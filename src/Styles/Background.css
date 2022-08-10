@@ -11,7 +11,7 @@
   left: 0px;
   height: 100vh;
   box-sizing: border-box;
-  /* border: solid 3px limegreen; */
+  background-color: rgba(245, 245, 245, 0.7);
 }
 @keyframes blender {
   0% {
@@ -76,5 +76,6 @@
   opacity: 0;
   animation: blender linear 50ms;
   /* background-size:contain; */
+  background-color: rgba(245, 245, 245, 0.7);
   /* animation time now in js file */
 }

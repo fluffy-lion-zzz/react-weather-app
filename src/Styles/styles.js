@@ -14,6 +14,7 @@ export const ContentStyled = styled.div`
   align-items: center;
   background-color: ${background};
   border-radius: ${radius};
+  box-shadow: ${shadow};
   @media only screen and ${Breakpoint.device.xs} {
     // border: solid red 3px;
   }
@@ -251,6 +252,7 @@ export const ListItem = styled.li`
   padding: 1px;
   margin: 1px;
   font-size: 1.3em;
+  z-index: 1;
   &:hover {
     transform: scale(1.1);
   }
