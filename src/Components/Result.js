@@ -1,7 +1,7 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
 
-import { MainText, ResultStyled, SplitContainer, ResultLocationText } from "../Styles/Styles";
+import { MainText, ResultStyled, SplitContainer, ResultLocationText } from "../Styles/Styles.js";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
