@@ -2,8 +2,8 @@
 
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
-import styled, { keyframes } from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import styled, { keyframes } from "styled-components";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // utils
 import { collect } from "./utilities/collect";
