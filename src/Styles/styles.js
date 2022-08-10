@@ -292,3 +292,19 @@ export const SunriseIcon = styled(WiSunrise)`
     margin-top: ${lgmargin};
   }
 `;
+
+export const ErrorContainer = styled.div`
+  background-color: ${background};
+  border-radius: ${radius};
+  box-shadow: ${shadow};
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  margin-top: 10px;
+`;
+export const EHeading = styled.h3`
+  font-style: ${(props) => (props.message ? "italic" : "bold")};
+  font-size: ${(props) => (props.message ? "2em" : "1em")};
+`;

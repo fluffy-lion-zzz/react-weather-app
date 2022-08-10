@@ -101,7 +101,9 @@ function App() {
     <div className="App">
       <>
         {loading ? (
-          <Loader />
+          <>
+            <Loader />
+          </>
         ) : (
           <>
             <Home
@@ -115,7 +117,7 @@ function App() {
             />
             {error.error ? (
               <>
-                <Error message={error.error} />
+                <Error message={error.message} />
               </>
             ) : (
               <Result
