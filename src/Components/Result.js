@@ -1,16 +1,7 @@
 import BigCard from "./BigCard";
 import ExtraInfo from "./ExtraInfo";
-import styled, { keyframes } from "styled-components";
-import {
-  ContentStyled,
-  MainText,
-  ResultStyled,
-  MainTextContainer,
-  SplitContainer,
-  ResultLocationText,
-} from "../Styles/Styles";
 
-import { motion } from "framer-motion";
+import { MainText, ResultStyled, SplitContainer, ResultLocationText } from "../Styles/Styles";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
