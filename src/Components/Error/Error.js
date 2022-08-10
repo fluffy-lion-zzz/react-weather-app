@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ErrorContainer, EHeading } from "../../Styles/Styles";
+// import styled from "styled-components";
+import { ErrorContainer, EHeading } from "../../Styles/Styles.js";
 
 
 
