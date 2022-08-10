@@ -1,6 +1,6 @@
 import SmallCard from "./SmallCard";
 // import { WiSunrise, WiSunset, WiWindy } from 'react-icons/wi'
-import { ExtraContainer } from "../Styles/Styles";
+import { ExtraContainer } from "../Styles/Styles.js";
 
 const ExtraInfo = ({ wind, sunrise, sunset, timezone }) => {
   let timeConverter = (unix) => {

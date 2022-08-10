@@ -1,4 +1,4 @@
-import { Button, MainText, FormContainer, InputContainer, Input, DisplaySearch, UnorderedList, ListItem } from "../Styles/Styles";
+import { Button, MainText, FormContainer, InputContainer, Input, DisplaySearch, UnorderedList, ListItem } from "../Styles/Styles.js";
 const Form = ({
   handleFetch,
   input,

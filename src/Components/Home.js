@@ -1,6 +1,6 @@
 // import { useState, useRef, useEffect } from "react";
 import Background from "./Background";
-import { ContentStyled, Heading, MainTextContainer } from "../Styles/Styles";
+import { ContentStyled, Heading, MainTextContainer } from "../Styles/Styles.js";
 import Form from "./Form";
 
 const Home = ({ input, setInput, suggest, updateInput, handleFetch, setClicked, search }) => {

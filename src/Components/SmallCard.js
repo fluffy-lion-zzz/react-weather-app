@@ -1,4 +1,4 @@
-import { SubText, SmallContainer, Icon, WindyIcon, SunsetIcon, SunriseIcon } from "../Styles/Styles";
+import { SubText, SmallContainer, Icon, WindyIcon, SunsetIcon, SunriseIcon } from "../Styles/Styles.js";
 
 const SmallCard = ({ info, icon }) => {
   return (
